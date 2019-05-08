@@ -152,6 +152,14 @@ export default class Home extends Component {
       </TouchableOpacity>
     );
   };
+
+  _emptyList = () => {
+    return(
+      <View style={{flex:1,alignItems:"center"}}>
+        <Text>No user avalible</Text>
+      </View>
+    )
+  }
   render() {
     let { loading, users } = this.state;
     return (
@@ -166,6 +174,7 @@ export default class Home extends Component {
           <FlatList
             data={users}
             renderItem={this._renderRow}
+            ListEmptyComponent={this._emptyList}
             keyExtractor={item => {
               item.phone;
             }}
